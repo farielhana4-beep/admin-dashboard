@@ -10,21 +10,23 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // COUNT DATA
         $users = User::count();
         $products = Product::count();
-        $orders = 0;
-        $revenue = 0;
 
+        // DUMMY (nanti upgrade)
+        $orders = 12;
+        $revenue = 15000000;
+
+        // DATA TABLE
         $latestUsers = User::latest()->take(5)->get();
-        $latestProducts = Product::latest()->take(5)->get();
 
         return view('admin.dashboard.index', compact(
             'users',
             'products',
             'orders',
             'revenue',
-            'latestUsers',
-            'latestProducts'
+            'latestUsers'
         ));
     }
 }

@@ -8,11 +8,16 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
-    }
+   public function index(Request $request)
+{
+    $search = $request->search;
+
+    $products = Product::when($search, function ($query) use ($search) {
+        $query->where('name', 'like', "%$search%");
+    })->paginate(5);
+
+    return view('admin.products.index', compact('products'));
+}
 
     public function create()
     {

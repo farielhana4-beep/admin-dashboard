@@ -13,7 +13,9 @@
                 <p>Total Users</p>
             </div>
             <div class="icon"><i class="fas fa-users"></i></div>
-            <a href="/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/users" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+            </a>
         </div>
     </div>
 
@@ -25,6 +27,9 @@
                 <p>Products</p>
             </div>
             <div class="icon"><i class="fas fa-box"></i></div>
+            <a href="/products" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+            </a>
         </div>
     </div>
 
@@ -43,7 +48,7 @@
     <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>{{ $revenue }}</h3>
+                <h3>Rp {{ number_format($revenue,0,',','.') }}</h3>
                 <p>Revenue</p>
             </div>
             <div class="icon"><i class="fas fa-money-bill"></i></div>
@@ -52,14 +57,20 @@
 
 </div>
 
+
 <div class="row">
 
-    <!-- CHART -->
+    <!-- LEFT -->
     <section class="col-lg-7">
+
+        <!-- CHART -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-chart-line"></i> Sales Overview</h3>
+                <h3 class="card-title">
+                    <i class="fas fa-chart-line"></i> Sales Overview
+                </h3>
             </div>
+
             <div class="card-body">
                 <div style="height:300px;">
                     <canvas id="salesChart"></canvas>
@@ -72,11 +83,16 @@
             <div class="card-header">
                 <h3 class="card-title">Latest Users</h3>
             </div>
+
             <div class="card-body table-responsive">
                 <table class="table table-bordered">
                     <thead>
-                        <tr><th>Name</th><th>Email</th></tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
                     </thead>
+
                     <tbody>
                         @foreach($latestUsers as $user)
                         <tr>
@@ -85,12 +101,15 @@
                         </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>
+
     </section>
 
-    <!-- RIGHT SIDE -->
+
+    <!-- RIGHT -->
     <section class="col-lg-5">
 
         <!-- QUICK ADD -->
@@ -98,6 +117,7 @@
             <div class="card-header">
                 <h3 class="card-title">Quick Add User</h3>
             </div>
+
             <div class="card-body">
                 <form action="/users" method="POST">
                     @csrf
@@ -108,11 +128,12 @@
             </div>
         </div>
 
-        <!-- STATS -->
+        <!-- SYSTEM STATS -->
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">System Stats</h3>
             </div>
+
             <div class="card-body">
 
                 <div class="progress-group">
@@ -140,7 +161,12 @@
 
 @endsection
 
+
+
 @section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     var ctx = document.getElementById('salesChart');
@@ -177,4 +203,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+
 @endsection

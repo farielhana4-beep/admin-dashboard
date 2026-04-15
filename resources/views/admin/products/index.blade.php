@@ -11,6 +11,9 @@
 </div>
 
 <div class="card-body">
+  <form method="GET" class="mb-3">
+    <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search product...">
+</form>
 
 <table class="table table-bordered">
 <thead>
@@ -61,6 +64,9 @@
 
 </tbody>
 </table>
+<div class="mt-3">
+    {{ $products->links() }}
+</div>
 
 </div>
 </div>
