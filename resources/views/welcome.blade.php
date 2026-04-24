@@ -221,5 +221,37 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+<section class="container mt-5">
+
+    <h2>About Me</h2>
+
+    @if($about)
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('storage/'.$about->photo) }}"
+                     style="width:150px;height:150px;border-radius:50%;object-fit:cover;">
+            </div>
+
+            <div class="col-md-8">
+                <h3>{{ $about->name }}</h3>
+                <p>{{ $about->bio }}</p>
+
+                <p><b>Email:</b> {{ $about->email }}</p>
+                <p><b>WA:</b> {{ $about->whatsapp }}</p>
+
+                @if($about->github)
+                    <p>
+                        <a href="{{ $about->github }}" target="_blank">
+                            Github
+                        </a>
+                    </p>
+                @endif
+            </div>
+        </div>
+    @endif
+
+</section>
+
     </body>
 </html>

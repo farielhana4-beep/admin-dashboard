@@ -4,16 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Portfolio extends Model
 {
     protected $fillable = [
-        'name',
         'title',
         'description',
-        'price',
-        'condition',
-        'status',
         'image',
-        'video'
+        'video', // 🔥 TAMBAH INI
+        'link'
     ];
 }

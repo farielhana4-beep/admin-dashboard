@@ -16,8 +16,8 @@
 
 <div class="wrapper">
 
-    @include('admin.layout.navbar')
-    @include('admin.layout.sidebar')
+    @include('admin.layouts.navbar')
+    @include('admin.layouts.sidebar')
 
     <div class="content-wrapper">
 
